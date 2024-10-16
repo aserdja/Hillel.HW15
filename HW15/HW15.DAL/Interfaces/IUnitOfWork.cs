@@ -4,8 +4,8 @@ namespace HW15.DAL.Interfaces
 {
 	public interface IUnitOfWork
 	{
-		IRepository<Author> Authors { get; }
-		IRepository<Book> Books { get; }
+		IAuthorRepository Authors { get; }
+		IBookRepository Books { get; }
 		IRepository<Genre> Genres { get; }
 		Task Commit();
 	}

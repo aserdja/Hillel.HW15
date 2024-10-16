@@ -7,22 +7,22 @@ namespace HW15.DAL.Repositories
 	public class UnitOfWork(BooksDbContext context) : IUnitOfWork
 	{
 		private readonly BooksDbContext _context = context;
-		private Repository<Author>? _authors;
-		private Repository<Book>? _books;
+		private IAuthorRepository? _authors;
+		private IBookRepository? _books;
 		private Repository<Genre>? _genres;
 
-		public IRepository<Author> Authors
+		public IAuthorRepository Authors
 		{
 			get
 			{
-				return _authors ?? (_authors = new Repository<Author>(_context));
+				return _authors ?? (_authors = new AuthorRepository(_context));
 			}
 		}
-		public IRepository<Book> Books
+		public IBookRepository Books
 		{
 			get
 			{
-				return _books ?? (_books = new Repository<Book>(_context));
+				return _books ?? (_books = new BookRepository(_context));
 			}
 		}
 		public IRepository<Genre> Genres

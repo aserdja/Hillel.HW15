@@ -16,16 +16,14 @@ namespace HW15.DAL.Repositories
 			_dbSet = _context.Set<T>();
 		}
 
-		public async Task Add(T entity)
+		public void Add(T entity)
 		{
 			_dbSet.Add(entity);
-			await _context.SaveChangesAsync();
 		}
 
-		public async Task Delete(T entity)
+		public void Delete(T entity)
 		{
-			_dbSet?.Remove(entity);
-			await _context.SaveChangesAsync();
+			_dbSet.Remove(entity);
 		}
 
 		public async Task<IEnumerable<T>> GetAll()
@@ -38,10 +36,9 @@ namespace HW15.DAL.Repositories
 			return await _dbSet.FindAsync(id);
 		}
 
-		public async Task Update(T entity)
+		public void Update(T entity)
 		{
 			_dbSet.Update(entity);
-			await _context.SaveChangesAsync();
 		}
 	}
 }
